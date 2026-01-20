@@ -26,7 +26,7 @@
       "@type": "ProfessionalService",
       "name": "Ciledug Promo Web Development",
       "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200",
-      "description": "Penyedia jasa pembuatan website dan landing page premium dengan berbagai gaya desain.",
+      "description": "Penyedia jasa pembuatan website dan landing page premium.",
       "url": "https://ciledug-bio.vercel.app/",
       "priceRange": "$$"
     }
@@ -59,7 +59,7 @@
 
         h1, h2, h3, .brand-font { font-family: 'Space Grotesk', sans-serif; }
 
-        /* AURA CARD STYLE (BENTO GRID) */
+        /* AURA CARD STYLE */
         .aura-card {
             background: var(--card-glass);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -84,6 +84,7 @@
             overflow: hidden;
             position: relative;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: #1e293b; /* Fallback color */
         }
         
         .card-img {
@@ -113,7 +114,7 @@
         .badge-cons { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
         .badge-art { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4); }
 
-        /* BUTTON AURA (BORDER BEAM) */
+        /* BUTTON AURA */
         .btn-aura {
             position: relative;
             display: flex;
@@ -128,7 +129,7 @@
             transition: 0.3s;
             text-transform: uppercase;
             font-size: 0.7rem;
-            margin-top: auto; /* Push to bottom */
+            margin-top: auto;
             border: 1px solid rgba(255,255,255,0.1);
         }
         
@@ -158,12 +159,6 @@
             display: block;
             margin-bottom: 2px;
         }
-
-        /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
     </style>
 </head>
 <body class="pb-24">
@@ -251,21 +246,7 @@
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" class="card-img" alt="Hologram Apple">
-                        <div class="absolute top-3 right-3 badge badge-tech">LAUNCH</div>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h3 class="text-lg font-bold text-white mb-2">Hologram Product</h3>
-                        <div class="info-list">
-                            <span class="info-label">Cocok Untuk:</span> Launching Produk Baru, Gadget, Jam Tangan.
-                        </div>
-                        <a href="https://ciledugpromo.biz.id/holographic-apple" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                    </div>
-                </div>
-                
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=800" class="card-img" alt="Interactive Video">
+                        <img src="https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?q=80&w=800" class="card-img" alt="Interactive Video">
                         <div class="absolute top-3 right-3 badge badge-tech">CINEMATIC</div>
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -276,8 +257,8 @@
                         <a href="https://ciledugpromo.biz.id/interactive-video" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
                     </div>
                 </div>
-                
-                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800" class="card-img" alt="Nexus Rig">
                         <div class="absolute top-3 right-3 badge badge-tech">HARDWARE</div>
@@ -288,6 +269,20 @@
                             <span class="info-label">Cocok Untuk:</span> Jasa Rakit PC, Toko Komputer, Service Center.
                         </div>
                         <a href="https://ciledug-hyper-rig-builder.vercel.app/" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                    </div>
+                </div>
+                
+                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" class="card-img" alt="Hologram Apple">
+                        <div class="absolute top-3 right-3 badge badge-tech">LAUNCH</div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white mb-2">Hologram Product</h3>
+                        <div class="info-list">
+                            <span class="info-label">Cocok Untuk:</span> Launching Produk Baru, Gadget, Jam Tangan.
+                        </div>
+                        <a href="https://ciledugpromo.biz.id/holographic-apple" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
                     </div>
                 </div>
             </div>
@@ -305,7 +300,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <div class="aura-card group" data-aos="fade-up">
                     <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1600596542815-2a4d9fdb88b8?q=80&w=800" class="card-img" alt="Mansion Aura">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800" class="card-img" alt="The Mansion Aura">
                         <div class="absolute top-3 right-3 badge badge-lux">PROPERTY</div>
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -344,8 +339,22 @@
                         <a href="https://project-7-fnb-aura.vercel.app/" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
                     </div>
                 </div>
+                
+                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="card-img" alt="Ethereal Estates">
+                        <div class="absolute top-3 right-3 badge badge-lux">CLUSTER</div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white mb-2">Ethereal Estates</h3>
+                        <div class="info-list">
+                            <span class="info-label">Cocok Untuk:</span> Developer Perumahan, Cluster Modern, Arsitek.
+                        </div>
+                        <a href="https://project-5-ethereal.vercel.app/" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                    </div>
+                </div>
 
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800" class="card-img" alt="Aura Dream">
                         <div class="absolute top-3 right-3 badge badge-lux">BEAUTY</div>
@@ -359,7 +368,7 @@
                     </div>
                 </div>
                 
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800" class="card-img" alt="Rent Car">
                         <div class="absolute top-3 right-3 badge badge-lux">SERVICE</div>
@@ -483,6 +492,20 @@
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=800" class="card-img" alt="Playfull Creative">
+                        <div class="absolute top-3 right-3 badge badge-art">FUN</div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-white mb-2">Playfull Creative</h3>
+                        <div class="info-list">
+                            <span class="info-label">Cocok Untuk:</span> Produk Anak, TK/Sekolah, Pet Shop, Toko Mainan.
+                        </div>
+                        <a href="https://ciledugpromo.biz.id/playfull" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800" class="card-img" alt="Bento Portfolio">
                         <div class="absolute top-3 right-3 badge badge-art">PERSONAL</div>
                     </div>
@@ -495,7 +518,7 @@
                     </div>
                 </div>
 
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=800" class="card-img" alt="Cyberpunk Style">
                         <div class="absolute top-3 right-3 badge badge-art">NEON</div>
@@ -509,7 +532,7 @@
                     </div>
                 </div>
 
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800" class="card-img" alt="Zen Minimalis">
                         <div class="absolute top-3 right-3 badge badge-art">CLEAN</div>
@@ -523,7 +546,7 @@
                     </div>
                 </div>
 
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" class="card-img" alt="High Impact Bold">
                         <div class="absolute top-3 right-3 badge badge-art">STRONG</div>
@@ -534,20 +557,6 @@
                             <span class="info-label">Cocok Untuk:</span> Gym/Fitness, Event Organizer, Brand Streetwear.
                         </div>
                         <a href="https://ciledugpromo.biz.id/premium-bold" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                    </div>
-                </div>
-
-                <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-img-container">
-                        <img src="https://images.unsplash.com/photo-1502086223501-600070ed75b6?q=80&w=800" class="card-img" alt="Playfull Creative">
-                        <div class="absolute top-3 right-3 badge badge-art">FUN</div>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h3 class="text-lg font-bold text-white mb-2">Playfull Creative</h3>
-                        <div class="info-list">
-                            <span class="info-label">Cocok Untuk:</span> Produk Anak, TK/Sekolah, Pet Shop, Toko Mainan.
-                        </div>
-                        <a href="https://ciledugpromo.biz.id/playfull" target="_blank" class="btn-aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
                     </div>
                 </div>
             </div>
