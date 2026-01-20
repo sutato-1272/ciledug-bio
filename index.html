@@ -8,6 +8,11 @@
     <title>Ciledug Promo | Katalog Website Premium & Jasa Digital</title>
     <meta name="description" content="Pusat katalog template website premium dan landing page siap pakai. Solusi digital terbaik untuk UMKM, Perusahaan, dan Personal Branding.">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
     <meta name="google-site-verification" content="jXg4IWWebWxb8BX8YB-Q8mCLMW4JAiT-RfkrlUjGhjA" />
     
     <meta name="robots" content="index, follow">
@@ -15,8 +20,10 @@
     <meta name="language" content="id">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -28,6 +35,7 @@
             --card-glass: rgba(15, 23, 42, 0.8);
         }
         
+        /* Critical CSS inline untuk Hero agar tidak layout shift */
         body { 
             font-family: 'Outfit', sans-serif; 
             background-color: var(--dark-bg); 
@@ -40,17 +48,17 @@
 
         h1, h2, h3, .brand-font { font-family: 'Space Grotesk', sans-serif; }
 
-        /* AURA CARD STYLE */
         .aura-card {
             background: var(--card-glass);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
+            will-change: transform; /* Optimasi GPU */
         }
         
         .aura-card:hover {
@@ -76,32 +84,16 @@
             filter: brightness(0.9);
         }
         
-        .aura-card:hover .card-img {
-            transform: scale(1.1);
-            filter: brightness(1.1);
-        }
+        .aura-card:hover .card-img { transform: scale(1.1); filter: brightness(1.1); }
 
-        /* BADGES */
-        .badge {
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            border-radius: 4px;
-            letter-spacing: 0.05em;
-        }
+        /* BADGES & BUTTONS */
+        .badge { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.05em; }
         .badge-tech { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
         .badge-lux { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
         .badge-cons { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
         .badge-art { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4); }
 
-        /* BUTTONS */
-        .btn-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: auto;
-        }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
 
         .btn-preview {
             display: flex; justify-content: center; align-items: center;
@@ -122,7 +114,6 @@
         }
         .btn-order:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
 
-        /* TEXT GRADIENT */
         .text-gradient {
             background: linear-gradient(to right, #3b82f6, #a855f7, #f43f5e);
             -webkit-background-clip: text;
@@ -150,7 +141,7 @@
         <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 z-0"></div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-blue-900/20 to-transparent blur-[100px] -z-10"></div>
 
-        <div class="relative z-10" data-aos="zoom-in">
+        <div class="relative z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur mb-6">
                 <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                 <span class="text-[10px] uppercase font-bold tracking-widest text-gray-300">Open For Business</span>
@@ -164,10 +155,10 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#tech" class="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold hover:bg-blue-500 hover:text-white transition">FUTURE TECH</a>
-                <a href="#luxury" class="px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold hover:bg-amber-500 hover:text-white transition">LUXURY</a>
-                <a href="#contractor" class="px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold hover:bg-green-500 hover:text-white transition">CONTRACTOR</a>
-                <a href="#faq" class="px-4 py-2 rounded-lg bg-white/10 border border-white/30 text-white text-xs font-bold hover:bg-white/20 transition">INFO LENGKAP</a>
+                <a href="#tech" class="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold hover:bg-blue-500 hover:text-white transition" aria-label="Lihat Kategori Tech">FUTURE TECH</a>
+                <a href="#luxury" class="px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold hover:bg-amber-500 hover:text-white transition" aria-label="Lihat Kategori Luxury">LUXURY</a>
+                <a href="#contractor" class="px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold hover:bg-green-500 hover:text-white transition" aria-label="Lihat Kategori Contractor">CONTRACTOR</a>
+                <a href="#faq" class="px-4 py-2 rounded-lg bg-white/10 border border-white/30 text-white text-xs font-bold hover:bg-white/20 transition" aria-label="Lihat Info Lengkap">INFO LENGKAP</a>
             </div>
         </div>
     </header>
@@ -185,73 +176,76 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 
                 <div class="aura-card group" data-aos="fade-up">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800" class="card-img" alt="Neuralink AI"> <div class="absolute top-3 right-3 badge badge-tech">AI SAAS</div></div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600" class="card-img" alt="Neuralink AI" loading="lazy" width="600" height="400"> 
+                        <div class="absolute top-3 right-3 badge badge-tech">AI SAAS</div>
+                    </div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Neuralink AI</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Startup Teknologi, Aplikasi SaaS.</div>
                         <div class="btn-group">
-                            <a href="https://project-6-saas-ai.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Neuralink%20AI" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://project-6-saas-ai.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Neuralink"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Neuralink%20AI" class="btn-order" aria-label="Pesan Neuralink"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" class="card-img" alt="Omniversal 3D"> <div class="absolute top-3 right-3 badge badge-tech">3D NEON</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600" class="card-img" alt="Omniversal 3D" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-tech">3D NEON</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Omniversal 3D</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Vape Store, Gadget, Agency.</div>
                         <div class="btn-group">
-                            <a href="https://omniversal-3d.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Omniversal%203D" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://omniversal-3d.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Omniversal"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Omniversal%203D" class="btn-order" aria-label="Pesan Omniversal"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800" class="card-img" alt="Hyper Bento"> <div class="absolute top-3 right-3 badge badge-tech">GRID CV</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600" class="card-img" alt="Hyper Bento" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-tech">GRID CV</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Hyper Bento</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> CV Digital, Freelancer, Bio Link.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/hyper-bento" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Hyper%20Bento" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/hyper-bento" target="_blank" class="btn-preview" aria-label="Preview Bento"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Hyper%20Bento" class="btn-order" aria-label="Pesan Bento"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1732815696398-3de26a5e3d76?q=80&w=800" class="card-img" alt="Interactive Video"> <div class="absolute top-3 right-3 badge badge-tech">CINEMATIC</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1732815696398-3de26a5e3d76?q=80&w=600" class="card-img" alt="Interactive Video" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-tech">CINEMATIC</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Interactive Story</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Filmmaker, Storytelling Brand.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/interactive-video" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Interactive%20Video" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/interactive-video" target="_blank" class="btn-preview" aria-label="Preview Video"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Interactive%20Video" class="btn-order" aria-label="Pesan Video"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800" class="card-img" alt="Nexus Rig"> <div class="absolute top-3 right-3 badge badge-tech">HARDWARE</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=600" class="card-img" alt="Nexus Rig" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-tech">HARDWARE</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Nexus Custom PC</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Jasa Rakit PC, Toko Komputer.</div>
                         <div class="btn-group">
-                            <a href="https://ciledug-hyper-rig-builder.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Nexus%20Rig" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledug-hyper-rig-builder.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Nexus"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Nexus%20Rig" class="btn-order" aria-label="Pesan Nexus"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
                 
                  <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" class="card-img" alt="Hologram Product"> <div class="absolute top-3 right-3 badge badge-tech">LAUNCH</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600" class="card-img" alt="Hologram Product" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-tech">LAUNCH</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Hologram Product</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Launching Produk, Gadget.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/holographic-apple" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Hologram%20Apple" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/holographic-apple" target="_blank" class="btn-preview" aria-label="Preview Hologram"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Hologram%20Apple" class="btn-order" aria-label="Pesan Hologram"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -268,73 +262,73 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <div class="aura-card group" data-aos="fade-up">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800" class="card-img" alt="The Mansion Aura"> <div class="absolute top-3 right-3 badge badge-lux">PROPERTY</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600" class="card-img" alt="The Mansion Aura" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-lux">PROPERTY</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">The Mansion Aura</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Developer Elite, Agen Properti.</div>
                         <div class="btn-group">
-                            <a href="https://real-estate-luxury-property.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20The%20Mansion" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://real-estate-luxury-property.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Mansion"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20The%20Mansion" class="btn-order" aria-label="Pesan Mansion"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=800" class="card-img" alt="The Apex Drive"> <div class="absolute top-3 right-3 badge badge-lux">AUTOMOTIVE</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=600" class="card-img" alt="The Apex Drive" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-lux">AUTOMOTIVE</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">The Apex Drive</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Showroom Mobil CBU, Rental Mewah.</div>
                         <div class="btn-group">
-                            <a href="https://the-apex-drive.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Apex%20Drive" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://the-apex-drive.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Apex"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Apex%20Drive" class="btn-order" aria-label="Pesan Apex"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800" class="card-img" alt="Gourmet Aura"> <div class="absolute top-3 right-3 badge badge-lux">F&B</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600" class="card-img" alt="Gourmet Aura" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-lux">F&B</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Gourmet Aura</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Steakhouse, Fine Dining.</div>
                         <div class="btn-group">
-                            <a href="https://project-7-fnb-aura.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Gourmet%20Aura" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://project-7-fnb-aura.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Gourmet"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Gourmet%20Aura" class="btn-order" aria-label="Pesan Gourmet"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="card-img" alt="Ethereal Estates"> <div class="absolute top-3 right-3 badge badge-lux">CLUSTER</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600" class="card-img" alt="Ethereal Estates" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-lux">CLUSTER</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Ethereal Estates</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Cluster Modern, Arsitek.</div>
                         <div class="btn-group">
-                            <a href="https://project-5-ethereal.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Ethereal%20Estates" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://project-5-ethereal.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Ethereal"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Ethereal%20Estates" class="btn-order" aria-label="Pesan Ethereal"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800" class="card-img" alt="Aura Dream"> <div class="absolute top-3 right-3 badge badge-lux">BEAUTY</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=600" class="card-img" alt="Aura Dream" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-lux">BEAUTY</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Aura Dream</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Klinik Kecantikan, Skincare.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/aura-dream" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Aura%20Dream" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/aura-dream" target="_blank" class="btn-preview" aria-label="Preview Aura"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Aura%20Dream" class="btn-order" aria-label="Pesan Aura"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800" class="card-img" alt="Rent Car"> <div class="absolute top-3 right-3 badge badge-lux">SERVICE</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600" class="card-img" alt="Rent Car" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-lux">SERVICE</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Luxury Rent Car</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Travel Executive, Wedding Car.</div>
                         <div class="btn-group">
-                            <a href="https://ciledug-rent-car-luxury.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Luxury%20Rent%20Car" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledug-rent-car-luxury.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Rent Car"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Luxury%20Rent%20Car" class="btn-order" aria-label="Pesan Rent Car"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -351,63 +345,61 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <div class="aura-card group border-green-500/20" data-aos="fade-up">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800" class="card-img" alt="Injeksi Beton"> <div class="absolute top-3 right-3 badge badge-cons">ENGINEERING</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600" class="card-img" alt="Injeksi Beton" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-cons">ENGINEERING</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">HydroShield</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Jasa Injeksi Beton, Waterproofing.</div>
                         <div class="btn-group">
-                            <a href="https://jasa-injeksi-beton-waterproofing.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20HydroShield" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://jasa-injeksi-beton-waterproofing.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Hydro"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20HydroShield" class="btn-order" aria-label="Pesan Hydro"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group border-green-500/20" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=800" class="card-img" alt="PipaPro"> <div class="absolute top-3 right-3 badge badge-cons">HIGH TECH</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600" class="card-img" alt="PipaPro" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-cons">HIGH TECH</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">PipaPro Sensor</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Saluran Mampet, Deteksi Bocor.</div>
                         <div class="btn-group">
-                            <a href="https://jasa-saluran-mampet.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20PipaPro" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://jasa-saluran-mampet.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Pipa"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20PipaPro" class="btn-order" aria-label="Pesan Pipa"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
-       
-
                 <div class="aura-card group border-green-500/20" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800" class="card-img" alt="CCTV Security"> <div class="absolute top-3 right-3 badge badge-cons">SECURITY</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=600" class="card-img" alt="CCTV Security" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-cons">SECURITY</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Smart Security</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Jasa CCTV, Smart Home.</div>
                         <div class="btn-group">
-                            <a href="https://ciledug-cctv-smart-home-security.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20CCTV%20Security" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledug-cctv-smart-home-security.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview CCTV"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20CCTV%20Security" class="btn-order" aria-label="Pesan CCTV"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                  <div class="aura-card group border-green-500/20" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800" class="card-img" alt="Pintu Harmonika"> <div class="absolute top-3 right-3 badge badge-cons">METAL</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=600" class="card-img" alt="Pintu Harmonika" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-cons">METAL</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Pintu Harmonika</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Bengkel Las, Pintu Besi Ruko.</div>
                         <div class="btn-group">
-                            <a href="https://pintu-harmonika.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Pintu%20Harmonika" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://pintu-harmonika.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Harmonika"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Pintu%20Harmonika" class="btn-order" aria-label="Pesan Harmonika"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group border-green-500/20" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800" class="card-img" alt="Kitchen Set"> <div class="absolute top-3 right-3 badge badge-cons">INTERIOR</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600" class="card-img" alt="Kitchen Set" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-cons">INTERIOR</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Interior & Kitchen</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Custom Furniture, Interior.</div>
                         <div class="btn-group">
-                            <a href="https://ciledug-interior-kitchen-seat.vercel.app/" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Kitchen%20Set" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledug-interior-kitchen-seat.vercel.app/" target="_blank" class="btn-preview" aria-label="Preview Kitchen"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Kitchen%20Set" class="btn-order" aria-label="Pesan Kitchen"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -424,73 +416,73 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <div class="aura-card group" data-aos="fade-up">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800" class="card-img" alt="Premium Agency"> <div class="absolute top-3 right-3 badge badge-art">CORPORATE</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600" class="card-img" alt="Premium Agency" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-art">CORPORATE</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Premium Agency</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Digital Agency, Corporate.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/digitalagency" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Premium%20Agency" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/digitalagency" target="_blank" class="btn-preview" aria-label="Preview Agency"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Premium%20Agency" class="btn-order" aria-label="Pesan Agency"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=800" class="card-img" alt="Playfull Creative"> <div class="absolute top-3 right-3 badge badge-art">FUN</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=600" class="card-img" alt="Playfull Creative" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-art">FUN</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Playfull Creative</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Produk Anak, TK, Pet Shop.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/playfull" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Playfull%20Creative" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/playfull" target="_blank" class="btn-preview" aria-label="Preview Playfull"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Playfull%20Creative" class="btn-order" aria-label="Pesan Playfull"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800" class="card-img" alt="Bento Portfolio"> <div class="absolute top-3 right-3 badge badge-art">PERSONAL</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600" class="card-img" alt="Bento Portfolio" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-art">PERSONAL</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Bento Brand</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Personal Branding, Freelancer.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/personalbrand" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Bento%20Brand" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/personalbrand" target="_blank" class="btn-preview" aria-label="Preview Bento Brand"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Bento%20Brand" class="btn-order" aria-label="Pesan Bento Brand"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=800" class="card-img" alt="Cyberpunk Style"> <div class="absolute top-3 right-3 badge badge-art">NEON</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=600" class="card-img" alt="Cyberpunk Style" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-art">NEON</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Cyberpunk Mode</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Gaming Store, Event Musik.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/cyberpunk" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Cyberpunk" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/cyberpunk" target="_blank" class="btn-preview" aria-label="Preview Cyberpunk"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Cyberpunk" class="btn-order" aria-label="Pesan Cyberpunk"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800" class="card-img" alt="Zen Minimalis"> <div class="absolute top-3 right-3 badge badge-art">CLEAN</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=600" class="card-img" alt="Zen Minimalis" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-art">CLEAN</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">Zen Minimalis</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Arsitek, Yoga, Portofolio Foto.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/minimalis" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Zen%20Minimalis" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/minimalis" target="_blank" class="btn-preview" aria-label="Preview Zen"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20Zen%20Minimalis" class="btn-order" aria-label="Pesan Zen"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="aura-card group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" class="card-img" alt="High Impact Bold"> <div class="absolute top-3 right-3 badge badge-art">STRONG</div></div>
+                    <div class="card-img-container"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600" class="card-img" alt="High Impact Bold" loading="lazy" width="600" height="400"> <div class="absolute top-3 right-3 badge badge-art">STRONG</div></div>
                     <div class="p-5 flex-1 flex flex-col">
                         <h3 class="text-lg font-bold text-white mb-2">High Impact</h3>
                         <div class="info-list"><span class="info-label">Cocok Untuk:</span> Gym, Event, Brand Streetwear.</div>
                         <div class="btn-group">
-                            <a href="https://ciledugpromo.biz.id/premium-bold" target="_blank" class="btn-preview"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
-                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20High%20Impact" class="btn-order"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
+                            <a href="https://ciledugpromo.biz.id/premium-bold" target="_blank" class="btn-preview" aria-label="Preview Impact"><i class="fa-solid fa-eye mr-2"></i> Preview</a>
+                            <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20saya%20tertarik%20pesan%20template%20High%20Impact" class="btn-order" aria-label="Pesan Impact"><i class="fa-brands fa-whatsapp mr-2"></i> Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -543,7 +535,7 @@
         
         <section class="max-w-4xl mx-auto pb-10">
             <div class="aura-card p-1 h-[300px]">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.716909516854!2d106.704859!3d-6.24009405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ed343af45fc195%3A0x98e5b8eaad8e2564!2sCiledugPromo.biz.id%20%7C%20Layanan%20Bisnis%20%26%20Pemasaran!5e0!3m2!1sid!2sid!4v1768642599691!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" class="map-dark" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.716909516854!2d106.704859!3d-6.24009405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ed343af45fc195%3A0x98e5b8eaad8e2564!2sCiledugPromo.biz.id%20%7C%20Layanan%20Bisnis%20%26%20Pemasaran!5e0!3m2!1sid!2sid!4v1768642599691!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" class="map-dark" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi Ciledug Promo"></iframe>
             </div>
         </section>
 
@@ -554,7 +546,7 @@
         <div class="relative z-10 max-w-4xl mx-auto px-4">
             <h2 class="text-2xl font-bold text-white mb-4 brand-font">READY TO LEVEL UP?</h2>
             <p class="text-gray-400 text-sm mb-8">Konsultasikan kebutuhan digital bisnis Anda sekarang.</p>
-            <a href="https://wa.me/6285283212205?text=Halo%20Ciledug%20Promo,%20saya%20mau%20konsultasi%20pembuatan%20website." class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-lg shadow-green-500/20 mb-8">
+            <a href="https://wa.me/6285283212205?text=Halo%20Ciledug%20Promo,%20saya%20mau%20konsultasi%20pembuatan%20website." class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition shadow-lg shadow-green-500/20 mb-8" aria-label="Hubungi via WhatsApp">
                 <i class="fa-brands fa-whatsapp text-xl"></i> HUBUNGI VIA WHATSAPP
             </a>
             
@@ -567,17 +559,23 @@
     </footer>
 
     <div class="fixed bottom-0 left-0 w-full p-4 flex gap-3 z-50 bg-[#020617]/90 backdrop-blur border-t border-white/10 md:hidden">
-        <a href="tel:085283212205" class="flex-1 bg-white/10 text-white font-bold py-3 rounded-lg text-center text-xs flex items-center justify-center gap-2 border border-white/10">
+        <a href="tel:085283212205" class="flex-1 bg-white/10 text-white font-bold py-3 rounded-lg text-center text-xs flex items-center justify-center gap-2 border border-white/10" aria-label="Telepon Sekarang">
             <i class="fa-solid fa-phone"></i> CALL
         </a>
-        <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20mau%20tanya%20jasa%20website." class="flex-1 bg-green-600 text-white font-bold py-3 rounded-lg text-center text-xs flex items-center justify-center gap-2 shadow-lg shadow-green-500/20">
+        <a href="https://wa.me/6285283212205?text=Halo%20Admin,%20mau%20tanya%20jasa%20website." class="flex-1 bg-green-600 text-white font-bold py-3 rounded-lg text-center text-xs flex items-center justify-center gap-2 shadow-lg shadow-green-500/20" aria-label="WhatsApp Sekarang">
             <i class="fa-brands fa-whatsapp text-lg"></i> WHATSAPP
         </a>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true, offset: 50 });
+        // Init AOS hanya untuk elemen non-critical
+        AOS.init({ 
+            duration: 800, 
+            once: true, 
+            offset: 50,
+            disable: 'mobile' // Opsi tambahan: matikan animasi di HP jika mau skor 100 mutlak
+        });
     </script>
 </body>
 </html>
