@@ -1,103 +1,404 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciledug Promo | Command Center</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
+    <title>Ciledug Promo | Premium Web Portfolio Hub</title>
+    <meta name="description" content="Koleksi portofolio website premium, landing page high-conversion, dan solusi digital untuk berbagai industri oleh Ciledug Promo.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        body { font-family: 'Share Tech Mono', monospace; background-color: #050505; color: #00ff41; }
-        .glitch-box { border: 1px solid #1f2937; transition: all 0.3s; position: relative; overflow: hidden; }
-        .glitch-box:hover { border-color: #00ff41; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); }
-        .status-dot { height: 8px; width: 8px; background-color: #00ff41; border-radius: 50%; display: inline-block; box-shadow: 0 0 5px #00ff41; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        .bg-grid { background-image: linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px); background-size: 20px 20px; }
+        :root {
+            --neon-blue: #3b82f6;
+            --neon-purple: #8b5cf6;
+            --dark-bg: #030712;
+            --card-bg: #0f172a;
+        }
+        
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--dark-bg); 
+            color: #e2e8f0; 
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        h1, h2, h3, .brand-font { font-family: 'Space Grotesk', sans-serif; }
+
+        /* AURA CARD STYLE (BENTO) */
+        .aura-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Glow Effect on Hover */
+        .aura-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s;
+            filter: brightness(0.8);
+        }
+        
+        .aura-card:hover .card-img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        /* BUTTON AURA (BORDER BEAM) */
+        .btn-aura {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 9999px;
+            overflow: hidden;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+        }
+        
+        .btn-aura::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 200%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), transparent);
+            animation: border-flow 3s linear infinite;
+        }
+        
+        .btn-aura-inner {
+            position: relative;
+            z-index: 1;
+            background: var(--dark-bg);
+            border-radius: 9999px;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 1px; left: 1px;
+        }
+        
+        .btn-aura span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-aura:hover .btn-aura-inner {
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        @keyframes border-flow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+
+        /* TEXT GRADIENT */
+        .text-gradient {
+            background: linear-gradient(to right, #3b82f6, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4 bg-grid">
+<body class="pb-20">
 
-    <div class="text-center mb-8 w-full max-w-md">
-        <div class="inline-block border border-green-900 bg-green-900/20 px-3 py-1 rounded text-xs tracking-widest mb-4">
-            <span class="status-dot mr-2"></span>SYSTEM ONLINE
-        </div>
-        <h1 class="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-2">CILEDUG PROMO</h1>
-        <p class="text-gray-400 text-sm">Digital Assets & Web Development Division</p>
-    </div>
-
-    <div class="w-full max-w-md space-y-4">
-
-        <a href="https://ciledug-rent-car-luxury.vercel.app/" target="_blank" class="glitch-box block bg-gray-900/50 p-4 rounded flex items-center gap-4 group">
-            <div class="h-10 w-10 bg-gray-800 rounded flex items-center justify-center group-hover:bg-green-900/30 transition">
-                <i class="fa-solid fa-car text-xl text-gray-300 group-hover:text-green-400"></i>
-            </div>
-            <div class="flex-1">
-                <h3 class="text-white text-lg leading-none">Rental Mobil VIP</h3>
-                <p class="text-xs text-gray-500 mt-1">Booking System & Catalog</p>
-            </div>
-            <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-green-400"></i>
-        </a>
-
-        <a href="https://ciledug-hyper-rig-builder.vercel.app/" target="_blank" class="glitch-box block bg-gray-900/50 p-4 rounded flex items-center gap-4 group">
-            <div class="h-10 w-10 bg-gray-800 rounded flex items-center justify-center group-hover:bg-purple-900/30 transition">
-                <i class="fa-solid fa-computer text-xl text-gray-300 group-hover:text-purple-400"></i>
-            </div>
-            <div class="flex-1">
-                <h3 class="text-white text-lg leading-none">Rakit PC Gaming</h3>
-                <p class="text-xs text-gray-500 mt-1">Dream Rig Simulator</p>
-            </div>
-            <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-purple-400"></i>
-        </a>
-
-        <a href="https://ciledug-interior-kitchen-seat.vercel.app/" target="_blank" class="glitch-box block bg-gray-900/50 p-4 rounded flex items-center gap-4 group">
-            <div class="h-10 w-10 bg-gray-800 rounded flex items-center justify-center group-hover:bg-yellow-900/30 transition">
-                <i class="fa-solid fa-couch text-xl text-gray-300 group-hover:text-yellow-400"></i>
-            </div>
-            <div class="flex-1">
-                <h3 class="text-white text-lg leading-none">Interior & Kitchen</h3>
-                <p class="text-xs text-gray-500 mt-1">Price Calculator Feature</p>
-            </div>
-            <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-yellow-400"></i>
-        </a>
-
-        <a href="https://ciledug-cctv-smart-home-security.vercel.app/" target="_blank" class="glitch-box block bg-gray-900/50 p-4 rounded flex items-center gap-4 group">
-            <div class="h-10 w-10 bg-gray-800 rounded flex items-center justify-center group-hover:bg-blue-900/30 transition">
-                <i class="fa-solid fa-video text-xl text-gray-300 group-hover:text-blue-400"></i>
-            </div>
-            <div class="flex-1">
-                <h3 class="text-white text-lg leading-none">CCTV & Smart Home</h3>
-                <p class="text-xs text-gray-500 mt-1">Security Catalog</p>
-            </div>
-            <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-blue-400"></i>
-        </a>
-
-        <a href="https://pintu-harmonika.vercel.app" target="_blank" class="glitch-box block bg-gray-900/50 p-4 rounded flex items-center gap-4 group">
-            <div class="h-10 w-10 bg-gray-800 rounded flex items-center justify-center group-hover:bg-red-900/30 transition">
-                <i class="fa-solid fa-door-open text-xl text-gray-300 group-hover:text-red-400"></i>
-            </div>
-            <div class="flex-1">
-                <h3 class="text-white text-lg leading-none">Pintu Harmonika</h3>
-                <p class="text-xs text-gray-500 mt-1">Industrial Profile</p>
-            </div>
-            <i class="fa-solid fa-chevron-right text-gray-600 group-hover:text-red-400"></i>
-        </a>
-
-    <div class="mt-10 text-center pb-8">
+    <header class="min-h-[50vh] flex flex-col justify-center items-center text-center px-4 relative pt-20 pb-10">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent blur-3xl -z-10"></div>
         
-        <a href="https://wa.me/6285283212205?text=Halo%20Admin%20CiledugPromo,%20saya%20mau%20konsultasi%20pembuatan%20website" 
-           class="inline-block text-green-400 hover:text-white font-bold tracking-[0.2em] border-b-2 border-green-500 hover:border-white transition-all duration-300 pb-1 mb-4 shadow-[0_0_15px_rgba(0,255,65,0.3)]">
-            [ HUBUNGI ADMIN PUSAT ]
-        </a>
+        <div class="mb-6" data-aos="fade-down">
+            <div class="inline-block p-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mb-4">
+                <img src="https://ui-avatars.com/api/?name=Ciledug+Promo&background=0f172a&color=fff&size=128" class="w-20 h-20 rounded-full border-4 border-[#030712]" alt="Profile">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-2 brand-font tracking-tight">CILEDUG <span class="text-gradient">PROMO</span></h1>
+            <p class="text-gray-400 text-sm md:text-lg max-w-xl mx-auto">Premium Digital Solutions Hub. Kumpulan portofolio website modern untuk bisnis masa depan.</p>
+        </div>
 
-        <p class="text-xs text-gray-400 font-mono">
-            © 2026 CILEDUG PROMO NETWORK
-        </p>
-        <p class="text-[10px] text-gray-600 mt-1">
-            STATUS: <span class="text-green-500">OPERATIONAL</span>
-        </p>
-    </div>
+        <div class="flex flex-wrap justify-center gap-3" data-aos="fade-up" data-aos-delay="200">
+            <a href="https://wa.me/6285283212205" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-gray-200 transition flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp"></i> HUBUNGI KAMI
+            </a>
+            <a href="#portfolio" class="border border-white/20 text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white/10 transition">
+                LIHAT PROJEK
+            </a>
+        </div>
+    </header>
 
+    <main id="portfolio" class="max-w-7xl mx-auto px-4 space-y-16">
+
+        <section>
+            <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                <div class="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1"></div>
+                <h2 class="text-2xl font-bold text-white brand-font text-center uppercase tracking-widest"><i class="fa-solid fa-microchip text-blue-500 mr-2"></i> Future Tech</h2>
+                <div class="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="aura-card group" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" class="card-img" alt="Omniversal 3D">
+                        <div class="absolute top-3 right-3 bg-purple-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur">3D EXPERIENCE</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-1">Omniversal 3D</h3>
+                        <p class="text-xs text-gray-400 mb-4">Cyberpunk & Neon Style untuk Creative Agency/Startup.</p>
+                        <a href="https://omniversal-3d.vercel.app/" target="_blank" class="btn-aura w-full">
+                            <div class="btn-aura-inner"><span><i class="fa-solid fa-rocket mr-2"></i> LIVE PREVIEW</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800" class="card-img" alt="Neuralink AI">
+                        <div class="absolute top-3 right-3 bg-blue-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur">SaaS AI</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-1">Neuralink AI</h3>
+                        <p class="text-xs text-gray-400 mb-4">Platform Artificial Intelligence Productivity.</p>
+                        <a href="https://project-6-saas-ai.vercel.app/" target="_blank" class="btn-aura w-full">
+                            <div class="btn-aura-inner"><span><i class="fa-solid fa-brain mr-2"></i> LIVE PREVIEW</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800" class="card-img" alt="Nexus Rig PC">
+                        <div class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur">GAMING RIG</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-1">Nexus Custom PC</h3>
+                        <p class="text-xs text-gray-400 mb-4">Jasa Rakit PC Gaming & Workstation High-End.</p>
+                        <a href="https://ciledug-hyper-rig-builder.vercel.app/" target="_blank" class="btn-aura w-full">
+                            <div class="btn-aura-inner"><span><i class="fa-solid fa-computer mr-2"></i> LIVE PREVIEW</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                <div class="h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent flex-1"></div>
+                <h2 class="text-2xl font-bold text-white brand-font text-center uppercase tracking-widest"><i class="fa-solid fa-house-chimney text-amber-500 mr-2"></i> Real Estate</h2>
+                <div class="h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent flex-1"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="aura-card group" data-aos="zoom-in">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1600596542815-2a4d9fdb88b8?q=80&w=800" class="card-img" alt="Heritage Mansion">
+                        <div class="absolute top-3 right-3 bg-amber-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur">LUXURY</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">The Mansion Aura</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Property Listing Elite.</p>
+                        <a href="https://real-estate-luxury-property.vercel.app/" target="_blank" class="text-amber-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="card-img" alt="Ethereal Estates">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">Ethereal Estates</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Modern Cluster Developer.</p>
+                        <a href="https://project-5-ethereal.vercel.app/" target="_blank" class="text-amber-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800" class="card-img" alt="Interior Kitchen">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">Interior & Kitchen</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Custom Furniture Specialist.</p>
+                        <a href="https://ciledug-interior-kitchen-seat.vercel.app/" target="_blank" class="text-amber-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1558002038-10917738179d?q=80&w=800" class="card-img" alt="CCTV Smart Home">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">CCTV Security</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Smart Home Protection.</p>
+                        <a href="https://ciledug-cctv-smart-home-security.vercel.app/" target="_blank" class="text-amber-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                <div class="h-px bg-gradient-to-r from-transparent via-green-500 to-transparent flex-1"></div>
+                <h2 class="text-2xl font-bold text-white brand-font text-center uppercase tracking-widest"><i class="fa-solid fa-helmet-safety text-green-500 mr-2"></i> Contractors</h2>
+                <div class="h-px bg-gradient-to-r from-transparent via-green-500 to-transparent flex-1"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="aura-card group border-green-500/30" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800" class="card-img" alt="Injeksi Beton">
+                        <div class="absolute top-3 right-3 bg-green-600 text-white text-[9px] font-bold px-2 py-1 rounded">ENGINEERING</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">HydroShield</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Injeksi Beton & Waterproofing.</p>
+                        <a href="https://jasa-injeksi-beton-waterproofing.vercel.app/" target="_blank" class="text-green-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group border-green-500/30" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800" class="card-img" alt="Pipa Mampet">
+                        <div class="absolute top-3 right-3 bg-green-600 text-white text-[9px] font-bold px-2 py-1 rounded">HIGH TECH</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">PipaPro Sensor</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Deteksi Bocor & Mampet.</p>
+                        <a href="https://jasa-saluran-mampet.vercel.app/" target="_blank" class="text-green-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group border-orange-500/30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800" class="card-img" alt="Cutting Beton">
+                        <div class="absolute top-3 right-3 bg-orange-600 text-white text-[9px] font-bold px-2 py-1 rounded">HEAVY DUTY</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">Titanium Cutter</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Jasa Potong & Bobok Beton.</p>
+                        <a href="https://jasa-sewa-cutting.vercel.app" target="_blank" class="text-orange-400 text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800" class="card-img" alt="Pintu Harmonika">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-white">Pintu Harmonika</h3>
+                        <p class="text-[10px] text-gray-400 mb-3">Spesialis Pintu Besi Ruko.</p>
+                        <a href="https://pintu-harmonika.vercel.app" target="_blank" class="text-white text-xs font-bold hover:underline">VISIT SITE →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                <div class="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent flex-1"></div>
+                <h2 class="text-2xl font-bold text-white brand-font text-center uppercase tracking-widest"><i class="fa-solid fa-car text-red-500 mr-2"></i> Auto & Life</h2>
+                <div class="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent flex-1"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="aura-card group" data-aos="fade-up">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=800" class="card-img" alt="Apex Drive">
+                        <div class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur">SUPERCARS</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-1">The Apex Drive</h3>
+                        <p class="text-xs text-gray-400 mb-4">Luxury Car Rental & Showroom.</p>
+                        <a href="https://the-apex-drive.vercel.app/" target="_blank" class="btn-aura w-full">
+                            <div class="btn-aura-inner"><span><i class="fa-solid fa-gauge-high mr-2"></i> VISIT SHOWROOM</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800" class="card-img" alt="Rent Car">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-1">Ciledug Rent Car</h3>
+                        <p class="text-xs text-gray-400 mb-4">Premium Wedding & Daily Car.</p>
+                        <a href="https://ciledug-rent-car-luxury.vercel.app/" target="_blank" class="btn-aura w-full">
+                            <div class="btn-aura-inner"><span><i class="fa-solid fa-car-side mr-2"></i> BOOK NOW</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="aura-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800" class="card-img" alt="Gourmet Aura">
+                        <div class="absolute top-3 right-3 bg-yellow-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur">F&B</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-white mb-1">The Gourmet Aura</h3>
+                        <p class="text-xs text-gray-400 mb-4">Steakhouse & Fine Dining Experience.</p>
+                        <a href="https://project-7-fnb-aura.vercel.app/" target="_blank" class="btn-aura w-full">
+                            <div class="btn-aura-inner"><span><i class="fa-solid fa-utensils mr-2"></i> RESERVE TABLE</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-10 border-t border-white/5 text-center text-gray-500 text-sm">
+        <p class="mb-4">© 2026 Ciledug Promo Portfolio. All Rights Reserved.</p>
+        <div class="flex justify-center gap-4 text-xl">
+            <a href="#" class="hover:text-blue-500 transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
 </body>
 </html>
